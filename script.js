@@ -8,12 +8,14 @@ function calc(Level, Rate, Xp) {
     NextXP = XP[NextXP];
     const messageNext = document.getElementById('message-next');
     const messageRun = document.getElementById('message-run');
+    const tableContainer = document.getElementById('table-container');
     const messageNext100 = document.getElementById('message-next100');
     const messageRun100 = document.getElementById('message-run100');
     document.getElementById('level').style.border = '';
     if (Level === '') {
         messageNext.textContent = '';
         messageRun.textContent = '';
+        tableContainer.textContent = '';
         messageNext100.textContent = '';
         messageRun100.textContent = '';
         document.getElementById('level').style.border = '2px solid red';
@@ -24,6 +26,7 @@ function calc(Level, Rate, Xp) {
     else if (Level == 0){
         messageNext.textContent = '';
         messageRun.textContent = '';
+        tableContainer.textContent = '';
         messageNext100.textContent = '';
         messageRun100.textContent = '';
         document.getElementById('level').style.border = '2px solid red';
@@ -50,17 +53,28 @@ function calc(Level, Rate, Xp) {
 
     if (Xp === '' || Xp == 0) {
         messageRun.textContent = '';
+        tableContainer.textContent = '';
         messageRun100.textContent = '';
     }
     else {
         NextRun = Math.ceil(NextXP / Xp);
         messageRun.innerHTML = 'あと <span style="color: red; font-weight: bold;">'+NextRun+'</span> 回走るとレベルアップ！';
         NextRun100 = Math.ceil(SumXP / Xp);
-        messageRun100.innerHTML = 'あと <span style="color: red; font-weight: bold;">'+NextRun100+'</span> 回走るとレベルマックス！';    
+        messageRun100.innerHTML = 'あと <span style="color: red; font-weight: bold;">'+NextRun100+'</span> 回走るとレベルマックス！';
+        if (Level == 99) {
+            tableContainer.textContent = '';
+        }
+        else {
+            generateTable(Level, Xp); //テーブル生成
+        }
     }
     messageNext.style.color = 'black';
-    messageNext.innerHTML = '次のレベルまで <span style="color: red; font-weight: bold;">'+NextXP+'</span> 経験値！';
-    messageNext100.innerHTML = 'レベル100まで <span style="color: red; font-weight: bold;">'+SumXP+'</span> 経験値！';
+    messageNext.innerHTML = '次のレベルまで <span style="color: red; font-weight: bold;">'+Number(NextXP).toLocaleString();+'</span> 経験値！';
+    messageNext100.innerHTML = 'レベル100まで <span style="color: red; font-weight: bold;">'+Number(SumXP).toLocaleString();+'</span> 経験値！';
+    if (Level == 99) {
+        messageNext.textContent = '';
+        messageRun.textContent = '';
+    }
 }
 
 //Cookieに値を設定する関数
@@ -95,4 +109,48 @@ function loadFormData() {
   if (formData.Xp) {
       document.getElementById('xp').value = formData.Xp;
     }  
+}
+
+function generateTable(Level, Xp) {
+  const rows = 6;
+  const cols = 3;
+  const titles = ["レベル", "必要経験値", "周回数"]; // タイトルを設定
+
+  const table = document.createElement('table');
+  table.border = "1"; // テーブルに枠線を追加
+
+  for (let i = 0; i < rows; i++) {
+      const row = document.createElement('tr'); // 行を作成
+
+      for (let j = 0; j < cols; j++) {
+          const cell = document.createElement(i === 0 ? 'th' : 'td'); // 先頭行は<th>、他は<td>
+
+          if (i === 0) {
+              cell.textContent = titles[j]; // 先頭行にはタイトルを設定
+              cell.style.backgroundColor = 'lightgray';
+              cell.style.fontWeight = 'bold';
+          } else if (j === 0) {
+            //   cell.textContent = `Row ${i}, Col ${j+1}`; // データ行には行と列の番号を設定
+            cell.textContent = +Level + 1;
+            Level++;
+          } else if (j === 1) {
+            NextNextXP = "Lv"+Level;
+            cell.textContent = Number(XP[NextNextXP]).toLocaleString();
+          } else if (j === 2) {
+            cell.textContent = Math.ceil(XP[NextNextXP] / Xp);
+          }
+
+          row.appendChild(cell); // 行にセルを追加
+      }
+
+      if (Level == 100) {
+        break;
+      }
+
+      table.appendChild(row); // テーブルに行を追加
+  }
+
+  const container = document.getElementById('table-container');
+  container.innerHTML = ''; // 以前の内容をクリア
+  container.appendChild(table); // 新しいテーブルを追加
 }

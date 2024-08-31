@@ -12,28 +12,41 @@
   <script type="text/javascript" src="DataBase.js"></script>
 </head>
 <body>
+  <form class="title_form">
   <h1>経験値計算ツール</h1>
+  </form>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <form class="diet_form">
+  <form class="xp_form">
       <dl>
           <dt>現在のレベル</dt>
           <dd><input id="level" class="box" type="number" placeholder="50" min="1" max="99" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
           <dt>現在の割合(%)</dt>
           <dd><input id="rate" class="box" type="number" placeholder="30" min="0" max="99" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
-          <dt>1回の獲得経験値</dt>
+          <dt>1回の獲得経験値(XP)</dt>
           <dd><input id="xp" class="box" type="number" placeholder="6000" min="0"></dd>
           <p><input type="button" class="calc-btn" onclick="calc(level.value, rate.value, xp.value);" value="計算"></p>
           <!-- 文字を表示するための要素 -->
           <p id="message-next"></p>
           <p id="message-run"></p>
-          &nbsp;
+          <!-- &nbsp; -->
+          <div id="table-container"></div>
           <p id="message-next100"></p>
           <p id="message-run100"></p>
       </dl>
   </form>
+  <a href="table.html">経験値テーブルはこちら</a>
   <p>쿠키런 for Kakaoの経験値計算ツールです。<br>
-  <span style="color: #ff0000">※入力データの保存にCookieを使用しています。<br>
-  Cookieを保存しない設定をしていると入力データは保存されません。</span><br>
-  <span style="font-size: 12px; color: #FFF;">更新日:2024/08/27</span>
-  </p></body>
+    <span style="color: #ff0000">※ゲーム内の%表記は正しくない可能性があるため、周回数に誤差が生じる事があります。</span>
+  </p>
+  <details>
+    <summary><b>ツール仕様</b></summary>
+    ・現在のレベルを入力すると次のレベルまでの必要経験値量を出力します。<br>
+    ・現在の割合を入力しない場合は0%として計算します。<br>
+    ・1回の獲得経験値を入力しない場合は表を生成しません。<br>
+    ・生成する表は最大でレベル5先までを表示します。<br>
+    <span style="color: #ff0000">※入力データの保存にCookieを使用しています。<br>
+    Cookieを保存しない設定をしていると入力データは保存されません。</span>
+  </details>
+  <p><span style="font-size: 12px; color: #FFF;">更新日:2024/08/27</span></p>
+  </body>
 </html>

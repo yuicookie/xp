@@ -1,11 +1,17 @@
 body {
     font-family: "ヒラギノ丸ゴ ProN";
 }
-.diet_form {
+.xp_form {
     background: #eaf4ff;
     padding: 10px 10px;
     width: 330px;
-    height: 450px;
+    height: 620px;
+}
+.title_form {
+    /* background: #eeeeee; */
+    padding: 10px 10px;
+    width: 330px;
+    height: 70px;
 }
 form dl dt {
     width: 170px;
@@ -32,4 +38,9 @@ form dl dd {
 }
 .calc-btn:hover {
     cursor: pointer;
+}
+table {
+    background-color: white;
+    text-align: center;
+    min-width: 300px;
 }
