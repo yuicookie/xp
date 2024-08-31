@@ -69,8 +69,8 @@ function calc(Level, Rate, Xp) {
         }
     }
     messageNext.style.color = 'black';
-    messageNext.innerHTML = '次のレベルまで <span style="color: red; font-weight: bold;">'+Number(NextXP).toLocaleString();+'</span> 経験値！';
-    messageNext100.innerHTML = 'レベル100まで <span style="color: red; font-weight: bold;">'+Number(SumXP).toLocaleString();+'</span> 経験値！';
+    messageNext.innerHTML = '次のレベルまで <span style="color: red; font-weight: bold;">'+Number(NextXP).toLocaleString()+'</span> 経験値！';
+    messageNext100.innerHTML = 'レベル100まで <span style="color: red; font-weight: bold;">'+Number(SumXP).toLocaleString()+'</span> 経験値！';
     if (Level == 99) {
         messageNext.textContent = '';
         messageRun.textContent = '';
