@@ -32,12 +32,28 @@ form dl dd {
     padding: 0 10px !important;
 }
 .calc-btn {
-    width: 80px;
-    height: 30px;
-    border: 1px solid #333;
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    font-size: 18px; /* 文字サイズ */
+    font-weight: bold; /* 文字を太字に */
+    color: white; /* 文字の色 */
+    background-color: #007bff; /* ボタンの背景色（青） */
+    border: none; /* ボーダーをなくす */
+    border-radius: 10px; /* 角丸にする */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* ボタンに影を付ける */
+    text-align: center; /* テキストを中央寄せに */
+    cursor: pointer; /* カーソルをポインタに */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* ホバー時のトランジション */
 }
 .calc-btn:hover {
-    cursor: pointer;
+    background-color: #0056b3; /* ホバー時の背景色 */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* ホバー時の影 */
+}
+/* タッチ時のスタイル */
+.calc-btn:active {
+    background-color: #004085; /* タッチ時の背景色 */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* タッチ時の影 */
 }
 table {
     background-color: white;
