@@ -5,7 +5,7 @@ body {
     background: #eaf4ff;
     padding: 10px 10px;
     width: 330px;
-    height: 630px;
+    height: 500px;
 }
 .title_form {
     /* background: #eeeeee; */
@@ -59,4 +59,18 @@ table {
     background-color: white;
     text-align: center;
     min-width: 300px;
+}
+#toggle-button {
+    display: none;
+    width: 80px;
+    height: 30px;
+    font-size: 12px; /* 文字サイズ */
+    font-weight: bold; /* 文字を太字に */
+    color: rgb(0, 0, 0); /* 文字の色 */
+    background-color: #cccccc; /* ボタンの背景色 */
+}
+.target {
+    display: none;
+    background: linear-gradient(transparent 70%, rgba(255, 255, 0, 0.5) 70%); /* 半透明の黄色 */
+    padding-bottom: 3px; /* テキストと下線の間に少し余白 */
 }

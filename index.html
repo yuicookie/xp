@@ -24,12 +24,17 @@
           <dd><input id="rate" class="box" type="number" placeholder="30" min="0" max="99" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
           <dt>1回の獲得経験値(XP)</dt>
           <dd><input id="xp" class="box" type="number" placeholder="6000" min="0"></dd>
-          <p><input type="button" class="calc-btn" onclick="calc(level.value, rate.value, xp.value);" value="計算"></p>
+          <dt>目標レベル</dt>
+          <dd><input id="target" class="box" type="number" placeholder="100" min="0" max="100" oninput="javascript: this.value = this.value.slice(0, 3);"></dd>
+          <p><input type="button" class="calc-btn" onclick="calc(level.value, rate.value, xp.value, target.value);" value="計算"></p>
           <!-- 文字を表示するための要素 -->
           <p id="message-next"></p>
           <p id="message-run"></p>
+          <p id="target-next" class="target"></p>
+          <p id="target-run" class="target"></p>
           <!-- &nbsp; -->
-          <div id="table-container"></div>
+          <div><input type="button" id="toggle-button" onclick="toggle();" value="閉じる"></button></div>
+          <div id="table-container" class="toggle-window"></div>
           <p id="message-next100"></p>
           <p id="message-run100"></p>
       </dl>
@@ -42,8 +47,7 @@
     <summary><b>ツール仕様</b></summary>
     ・現在のレベルを入力すると次のレベルまでの必要経験値量を出力します。<br>
     ・現在の割合を入力しない場合は0%として計算します。<br>
-    ・1回の獲得経験値を入力しない場合は表を生成しません。<br>
-    ・生成する表は最大でレベル5先までを表示します。<br>
+    ・現在のレベル, 1回の獲得経験値, 目標レベルを入力すると表を出力します。<br>
     <span style="color: #ff0000">※入力データの保存にCookieを使用しています。<br>
     Cookieを保存しない設定をしていると入力データは保存されません。</span>
   </details>
