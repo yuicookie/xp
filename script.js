@@ -197,8 +197,10 @@ function toggle() {
   if (toggleWindow.style.display === 'none' || toggleWindow.style.display === '') {
       toggleWindow.style.display = 'block'; // ウィンドウを表示
       document.querySelector('.xp_form').style.height = table_height + 'px';
+      document.getElementById('toggle-button').value = '閉じる';
   } else {
       toggleWindow.style.display = 'none'; // ウィンドウを非表示
       document.querySelector('.xp_form').style.height = '610px';
+      document.getElementById('toggle-button').value = '開く';
   }
 };
