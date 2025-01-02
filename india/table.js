@@ -24,7 +24,7 @@ function xpTable() {
             Level++;
           } else if (j === 1) {
             NextNextXP = "Lv"+Level;
-            cell.textContent = Number(XP[NextNextXP]).toLocaleString();
+            cell.textContent = formatIndianNumber(Number(XP[NextNextXP]));
           }
           row.appendChild(cell); // 行にセルを追加
       }

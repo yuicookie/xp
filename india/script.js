@@ -86,7 +86,7 @@ function calc(Level, Rate, Xp, Target) {
           toggleButton.style.display ="block";
           tableContainer.style.display ="block";
           TotalXP += NextXP;
-          targetNext.innerHTML = '目標のレベルまで <span style="color: red; font-weight: bold;">'+Number(TotalXP).toLocaleString()+'</span> 経験値！';
+          targetNext.innerHTML = '目標のレベルまで <span style="color: red; font-weight: bold;">'+formatIndianNumber(Number(TotalXP))+'</span> 経験値！';
           TotalXP = Math.ceil(TotalXP / Xp);
           targetRun.innerHTML = 'あと <span style="color: red; font-weight: bold;">'+TotalXP+'</span> 回走ると目標達成！';
           targetNext.style.display ="block";
@@ -98,8 +98,8 @@ function calc(Level, Rate, Xp, Target) {
       }
   }
   messageNext.style.color = 'black';
-  messageNext.innerHTML = '次のレベルまで <span style="color: red; font-weight: bold;">'+Number(NextXP).toLocaleString()+'</span> 経験値！';
-  messageNext100.innerHTML = 'レベル50まで <span style="color: red; font-weight: bold;">'+Number(SumXP).toLocaleString()+'</span> 経験値！';
+  messageNext.innerHTML = '次のレベルまで <span style="color: red; font-weight: bold;">'+formatIndianNumber(Number(NextXP))+'</span> 経験値！';
+  messageNext100.innerHTML = 'レベル50まで <span style="color: red; font-weight: bold;">'+formatIndianNumber(Number(SumXP))+'</span> 経験値！';
   if (Level == 49) {
       messageNext.textContent = '';
       messageRun.textContent = '';
@@ -174,7 +174,7 @@ function generateTable(Level, Xp, Target) {
             NextNextXP = "Lv"+Level;
             TotalXP = TotalXP + XP[NextNextXP];
             // console.log(TotalXP)
-            cell.textContent = Number(XP[NextNextXP]).toLocaleString();
+            cell.textContent = formatIndianNumber(Number(XP[NextNextXP]));
           } else if (j === 2) {
             cell.textContent = Math.ceil(XP[NextNextXP] / Xp);
           }
@@ -210,3 +210,15 @@ function toggle() {
       document.getElementById('toggle-button').value = '開く';
   }
 };
+
+//インド式カンマ区切り
+function formatIndianNumber(num) {
+  const str = num.toString();
+  const lastThree = str.slice(-3); // 最後の3桁
+  const otherDigits = str.slice(0, -3); // 残りの部分
+  if (otherDigits !== '') {
+    return otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + lastThree;
+  } else {
+    return lastThree;
+  }
+}
