@@ -192,7 +192,7 @@ function generateTable(Level, Xp, Target) {
   const container = document.getElementById('table-container');
   container.innerHTML = ''; // 以前の内容をクリア
   container.appendChild(table); // 新しいテーブルを追加
-  table_height = 630 + rows * 30;
+  table_height = 630 + rows * 31;
   document.querySelector('.xp_form').style.height = table_height + 'px';
 }
 
