@@ -1,11 +1,15 @@
 body {
     font-family: "ヒラギノ丸ゴ ProN";
 }
+h1, h5 {
+    display: inline-block; /* インラインブロック要素に変更 */
+    margin: 0; /* 余白をリセット */
+}
 .title_form {
     /* background: #eeeeee; */
-    padding: 10px 10px;
-    width: 410px;
-    height: 120px;
+    /* padding: 10px 10px; */
+    width: 350px;
+    height: 80px;
 }
 .xp_form {
     background: #eaf4ff;

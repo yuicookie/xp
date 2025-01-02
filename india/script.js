@@ -173,7 +173,7 @@ function generateTable(Level, Xp, Target) {
           } else if (j === 1) {
             NextNextXP = "Lv"+Level;
             TotalXP = TotalXP + XP[NextNextXP];
-            console.log(TotalXP)
+            // console.log(TotalXP)
             cell.textContent = Number(XP[NextNextXP]).toLocaleString();
           } else if (j === 2) {
             cell.textContent = Math.ceil(XP[NextNextXP] / Xp);

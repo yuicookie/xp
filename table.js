@@ -4,7 +4,7 @@ function xpTable() {
   const cols = 2;
   const titles = ["レベル", "必要経験値"]; // タイトルを設定
   let Level = 0;
-  document.querySelector('.title_form').style.height = '70px';
+  document.querySelector('.title_form').style.height = '50px';
 
   const table = document.createElement('table');
   table.border = "1"; // テーブルに枠線を追加
