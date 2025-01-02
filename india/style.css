@@ -7,20 +7,11 @@ body {
     width: 410px;
     height: 120px;
 }
-.container {
-    display: flex;
-}
 .xp_form {
     background: #eaf4ff;
     padding: 10px 10px;
     width: 330px;
     height: 500px;
-}
-.hidden-area {
-    width: 80px;
-    height: 520px;
-    /* background-color: lightgray; */
-    background-color: transparent;
 }
 form dl dt {
     width: 170px;
