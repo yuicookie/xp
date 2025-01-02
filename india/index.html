@@ -5,28 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>経験値計算ツール</title>
-  <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-180x180.png">
-  <link rel="icon" type="image/png" href="icon-192x192.png">
+  <link rel="apple-touch-icon" type="image/png" href="../apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="../icon-192x192.png">
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="script.js"></script>
   <script type="text/javascript" src="database.js"></script>
 </head>
 <body>
   <form class="title_form">
-  <h1>経験値計算ツール(Kakao)</h1>
-  <a href="india/index.html">インド版はこちら</a>
+  <h1>経験値計算ツール(India)</h1>
+  <a href="../index.html">カカオ版はこちら</a>
   </form>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <form class="xp_form">
       <dl>
           <dt>現在のレベル</dt>
-          <dd><input id="level" class="box" type="number" placeholder="50" min="1" max="99" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
-          <dt>現在の割合(%)</dt>
-          <dd><input id="rate" class="box" type="number" placeholder="30" min="0" max="99" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
+          <dd><input id="level" class="box" type="number" placeholder="20" min="1" max="50" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
+          <dt>現在の経験値量</dt>
+          <dd><input id="rate" class="box" type="number" placeholder="22000"></dd>
           <dt>1回の獲得経験値(XP)</dt>
-          <dd><input id="xp" class="box" type="number" placeholder="6000" min="0"></dd>
+          <dd><input id="xp" class="box" type="number" placeholder="3000" min="0"></dd>
           <dt>目標のレベル</dt>
-          <dd><input id="target" class="box" type="number" placeholder="100" min="1" max="100" oninput="javascript: this.value = this.value.slice(0, 3);"></dd>
+          <dd><input id="target" class="box" type="number" placeholder="50" min="1" max="50" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
           <p><input type="button" class="calc-btn" onclick="calc(level.value, rate.value, xp.value, target.value);" value="計算"></p>
           <!-- 文字を表示するための要素 -->
           <p id="message-next"></p>
@@ -41,17 +41,15 @@
       </dl>
   </form>
   <a href="table.html">経験値テーブルはこちら</a>
-  <p>쿠키런 for Kakaoの経験値計算ツールです。<br>
-    <span style="color: #ff0000">※ゲーム内の%表記は正しくない可能性があるため、周回数に誤差が生じる事があります。</span>
-  </p>
+  <p>CookieRun Indiaの経験値計算ツールです。</p>
   <details>
     <summary><b>ツール仕様</b></summary>
     ・現在のレベルを入力すると次のレベルまでの必要経験値量を出力します。<br>
-    ・現在の割合を入力しない場合は0%として計算します。<br>
+    ・現在の経験値量を入力しない場合は0として計算します。<br>
     ・現在のレベル, 1回の獲得経験値, 目標レベルを入力すると表を出力します。<br>
     <span style="color: #ff0000">※入力データの保存にCookieを使用しています。<br>
     Cookieを保存しない設定をしていると入力データは保存されません。</span>
   </details>
-  <p><span style="font-size: 12px; color: #FFF;">更新日:2024/09/07</span></p>
+  <p><span style="font-size: 12px; color: #FFF;">更新日:2025/01/02</span></p>
   </body>
 </html>

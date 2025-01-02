@@ -1,6 +1,6 @@
 window.onload = xpTable;
 function xpTable() {
-  const rows = 100;
+  const rows = 50;
   const cols = 2;
   const titles = ["レベル", "必要経験値"]; // タイトルを設定
   let Level = 0;

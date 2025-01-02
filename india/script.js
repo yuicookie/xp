@@ -3,13 +3,14 @@ let TotalXP = 0;
 
 function calc(Level, Rate, Xp, Target) {
   //Cookie保存
-  setCookie("Level", encodeURIComponent(Level), 365); // 1年間有効なCookie
-  setCookie("Rate", encodeURIComponent(Rate), 365); // 1年間有効なCookie
-  setCookie("Xp", encodeURIComponent(Xp), 365); // 1年間有効なCookie
-  setCookie("Target", encodeURIComponent(Target), 365); // 1年間有効なCookie
+  setCookie("Level_I", encodeURIComponent(Level), 365); // 1年間有効なCookie
+  setCookie("Rate_I", encodeURIComponent(Rate), 365); // 1年間有効なCookie
+  setCookie("Xp_I", encodeURIComponent(Xp), 365); // 1年間有効なCookie
+  setCookie("Target_I", encodeURIComponent(Target), 365); // 1年間有効なCookie
 
   document.querySelector('.xp_form').style.height = '500px';
   document.getElementById('level').style.border = '';
+  document.getElementById('rate').style.border = '';
   const messageNext = document.getElementById('message-next');
   const messageRun = document.getElementById('message-run');
   const targetNext = document.getElementById('target-next');
@@ -51,13 +52,18 @@ function calc(Level, Rate, Xp, Target) {
   if (Rate === '' || Rate == 0) {
       Rate = 0;
   }
+  else if (NextXP <= Rate) {
+      document.getElementById('rate').style.border = '2px solid red';
+      messageNext.style.color = 'red';
+      messageNext.textContent = '正しい経験値量を入力してください。';
+      return;
+  }
   else {
-      RateXP = (Rate / 100) * NextXP;
-      NextXP = NextXP - RateXP;
+      NextXP = NextXP - Rate;
   }
   //100レベルまでの経験値
   SumXP = 0;
-  for (i = +Level + 1; i < 100; i++) {
+  for (i = +Level + 1; i < 50; i++) {
       TempXP = "Lv"+i;
       SumXP += XP[TempXP];
   }
@@ -70,7 +76,7 @@ function calc(Level, Rate, Xp, Target) {
       messageRun.innerHTML = 'あと <span style="color: red; font-weight: bold;">'+NextRun+'</span> 回走るとレベルアップ！';
       NextRun100 = Math.ceil(SumXP / Xp);
       messageRun100.innerHTML = 'あと <span style="color: red; font-weight: bold;">'+NextRun100+'</span> 回走るとレベルマックス！';
-      if (Level == 99) {
+      if (Level == 49) {
       }
       else if(Target === '' || Target == 0) {
       }
@@ -93,8 +99,8 @@ function calc(Level, Rate, Xp, Target) {
   }
   messageNext.style.color = 'black';
   messageNext.innerHTML = '次のレベルまで <span style="color: red; font-weight: bold;">'+Number(NextXP).toLocaleString()+'</span> 経験値！';
-  messageNext100.innerHTML = 'レベル100まで <span style="color: red; font-weight: bold;">'+Number(SumXP).toLocaleString()+'</span> 経験値！';
-  if (Level == 99) {
+  messageNext100.innerHTML = 'レベル50まで <span style="color: red; font-weight: bold;">'+Number(SumXP).toLocaleString()+'</span> 経験値！';
+  if (Level == 49) {
       messageNext.textContent = '';
       messageRun.textContent = '';
       messageNext100.style.display ="block";
@@ -125,23 +131,23 @@ function loadFormData() {
   }
 
   //フォームにデータをセットする
-  if (formData.Level) {
-    document.getElementById('level').value = formData.Level;
+  if (formData.Level_I) {
+    document.getElementById('level').value = formData.Level_I;
   }
-  if (formData.Rate) {
-    document.getElementById('rate').value = formData.Rate;
+  if (formData.Rate_I) {
+    document.getElementById('rate').value = formData.Rate_I;
   }
-  if (formData.Xp) {
-    document.getElementById('xp').value = formData.Xp;
+  if (formData.Xp_I) {
+    document.getElementById('xp').value = formData.Xp_I;
   }
-  if (formData.Target) {
-    document.getElementById('target').value = formData.Target;
+  if (formData.Target_I) {
+    document.getElementById('target').value = formData.Target_I;
   }
 }
 
 function generateTable(Level, Xp, Target) {
-  if (Target > 100) {
-    Target = 100;
+  if (Target > 50) {
+    Target = 50;
   }
   const rows = +Target - Level;
   const cols = 3;
@@ -176,7 +182,7 @@ function generateTable(Level, Xp, Target) {
           row.appendChild(cell); // 行にセルを追加
       }
 
-      if (Level == 100) {
+      if (Level == 50) {
         break;
       }
 
