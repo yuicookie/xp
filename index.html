@@ -20,13 +20,13 @@
   <form class="xp_form">
       <dl>
           <dt>現在のレベル</dt>
-          <dd><input id="level" class="box" type="number" placeholder="50" min="1" max="99" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
+          <dd><input id="level" class="box" type="number" placeholder="50" min="1" max="109" oninput="javascript: this.value = this.value.slice(0, 3);"></dd>
           <dt>現在の割合(%)</dt>
           <dd><input id="rate" class="box" type="number" placeholder="30" min="0" max="99" oninput="javascript: this.value = this.value.slice(0, 2);"></dd>
           <dt>1回の獲得経験値(XP)</dt>
           <dd><input id="xp" class="box" type="number" placeholder="6000" min="0"></dd>
           <dt>目標のレベル</dt>
-          <dd><input id="target" class="box" type="number" placeholder="100" min="1" max="100" oninput="javascript: this.value = this.value.slice(0, 3);"></dd>
+          <dd><input id="target" class="box" type="number" placeholder="110" min="1" max="110" oninput="javascript: this.value = this.value.slice(0, 3);"></dd>
           <p><input type="button" class="calc-btn" onclick="calc(level.value, rate.value, xp.value, target.value);" value="計算"></p>
           <!-- 文字を表示するための要素 -->
           <p id="message-next"></p>
@@ -42,7 +42,7 @@
   </form>
   <a href="table.html">経験値テーブルはこちら</a>
   <p>쿠키런 for Kakaoの経験値計算ツールです。<br>
-    <span style="color: #ff0000">※ゲーム内の%表記は正しくない可能性があるため、周回数に誤差が生じる事があります。</span>
+    <span style="color: #ff0000">※ゲーム内の%表記は正確ではない事があるため、周回数に誤差が生じる場合があります。</span>
   </p>
   <details open>
     <summary><b>ツール仕様</b></summary>
@@ -52,6 +52,6 @@
     <span style="color: #ff0000">※入力データの保存にCookieを使用しています。<br>
     Cookieを保存しない設定をしていると入力データは保存されません。</span>
   </details>
-  <p><span style="font-size: 12px; color: #FFF;">更新日:2024/09/07</span></p>
+  <p><span style="font-size: 12px; color: #FFF;">更新日:2026/04/15</span></p>
   </body>
 </html>

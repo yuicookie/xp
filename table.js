@@ -1,6 +1,6 @@
 window.onload = xpTable;
 function xpTable() {
-  const rows = 100;
+  const rows = 110;
   const cols = 2;
   const titles = ["レベル", "必要経験値"]; // タイトルを設定
   let Level = 0;
@@ -25,6 +25,11 @@ function xpTable() {
           } else if (j === 1) {
             NextNextXP = "Lv"+Level;
             cell.textContent = Number(XP[NextNextXP]).toLocaleString();
+
+            // レベル100～109までの必要経験値を赤字にする
+            if (Level >= 100 && Level <= 109) {
+              cell.style.color = 'red';
+            }
           }
           row.appendChild(cell); // 行にセルを追加
       }

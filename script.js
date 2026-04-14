@@ -44,7 +44,13 @@ function calc(Level, Rate, Xp, Target) {
   else if (Level == 0){
       document.getElementById('level').style.border = '2px solid red';
       messageNext.style.color = 'red';
-      messageNext.textContent = '現在のレベルに1以上を入力してください。';
+      messageNext.textContent = '現在のレベルに1～109までの数字を入力してください。';
+      return;
+  }
+  else if (Level >= 110){
+      document.getElementById('level').style.border = '2px solid red';
+      messageNext.style.color = 'red';
+      messageNext.textContent = '現在のレベルに1～109までの数字を入力してください。';
       return;
   }
   //現在の割合
@@ -55,9 +61,9 @@ function calc(Level, Rate, Xp, Target) {
       RateXP = (Rate / 100) * NextXP;
       NextXP = NextXP - RateXP;
   }
-  //100レベルまでの経験値
+  //110レベルまでの経験値
   SumXP = 0;
-  for (i = +Level + 1; i < 100; i++) {
+  for (i = +Level + 1; i < 110; i++) {
       TempXP = "Lv"+i;
       SumXP += XP[TempXP];
   }
@@ -70,7 +76,7 @@ function calc(Level, Rate, Xp, Target) {
       messageRun.innerHTML = 'あと <span style="color: red; font-weight: bold;">'+NextRun+'</span> 回走るとレベルアップ！';
       NextRun100 = Math.ceil(SumXP / Xp);
       messageRun100.innerHTML = 'あと <span style="color: red; font-weight: bold;">'+NextRun100+'</span> 回走るとレベルマックス！';
-      if (Level == 99) {
+      if (Level == 109) {
       }
       else if(Target === '' || Target == 0) {
       }
@@ -93,8 +99,8 @@ function calc(Level, Rate, Xp, Target) {
   }
   messageNext.style.color = 'black';
   messageNext.innerHTML = '次のレベルまで <span style="color: red; font-weight: bold;">'+Number(NextXP).toLocaleString()+'</span> 経験値！';
-  messageNext100.innerHTML = 'レベル100まで <span style="color: red; font-weight: bold;">'+Number(SumXP).toLocaleString()+'</span> 経験値！';
-  if (Level == 99) {
+  messageNext100.innerHTML = 'レベル110まで <span style="color: red; font-weight: bold;">'+Number(SumXP).toLocaleString()+'</span> 経験値！';
+  if (Level == 109) {
       messageNext.textContent = '';
       messageRun.textContent = '';
       messageNext100.style.display ="block";
@@ -112,7 +118,7 @@ function setCookie(name, value, days) {
   }
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
-  
+
 //読み込み時に実行する
 window.onload = loadFormData;
 function loadFormData() {
@@ -140,8 +146,8 @@ function loadFormData() {
 }
 
 function generateTable(Level, Xp, Target) {
-  if (Target > 100) {
-    Target = 100;
+  if (Target > 110) {
+    Target = 110;
   }
   const rows = +Target - Level;
   const cols = 3;
@@ -176,7 +182,7 @@ function generateTable(Level, Xp, Target) {
           row.appendChild(cell); // 行にセルを追加
       }
 
-      if (Level == 100) {
+      if (Level == 110) {
         break;
       }
 

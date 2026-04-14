@@ -45,7 +45,13 @@ function calc(Level, Rate, Xp, Target) {
   else if (Level == 0){
       document.getElementById('level').style.border = '2px solid red';
       messageNext.style.color = 'red';
-      messageNext.textContent = '現在のレベルに1以上を入力してください。';
+      messageNext.textContent = '現在のレベルに1～49までの数字を入力してください。';
+      return;
+  }
+  else if (Level >= 50){
+      document.getElementById('level').style.border = '2px solid red';
+      messageNext.style.color = 'red';
+      messageNext.textContent = '現在のレベルに1～49までの数字を入力してください。';
       return;
   }
   //現在の割合
@@ -118,7 +124,7 @@ function setCookie(name, value, days) {
   }
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
-  
+
 //読み込み時に実行する
 window.onload = loadFormData;
 function loadFormData() {
